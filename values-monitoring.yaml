@@ -1,0 +1,62 @@
+prometheus:
+  enabled: true
+  service:
+    type: NodePort  # 서비스 타입을 NodePort로 변경
+    nodePort: 30090  # 고정된 NodePort 지정
+  prometheusSpec:
+    nodeSelector:
+      purpose: monitoring  # 모니터링 전용 노드에 배치
+    tolerations:
+    - key: "purpose"
+      operator: "Equal"
+      value: "monitoring"
+      effect: "NoSchedule"  # Taint가 있는 노드에서 실행 허용
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce  # PVC가 단일 노드에 마운트되도록 설정
+          resources:
+            requests:
+              storage: 7Gi  # 요청할 스토리지 크기
+          storageClassName: "local-path"  # 스토리지 클래스를 local-path로 설정
+
+
+alertmanager:
+  alertmanagerSpec:
+    nodeSelector:
+      purpose: monitoring  # 모니터링 전용 노드에 배치
+    tolerations:
+    - key: "purpose"
+      operator: "Equal"
+      value: "monitoring"
+      effect: "NoSchedule"  # Taint가 있는 노드에서 실행 허용
+
+grafana:
+  service:
+    type: NodePort  # Grafana는 NodePort로 노출
+    nodePort: 30080  # 고정된 NodePort 지정
+  adminUser: "soldesk3"  # Grafana 관리자 사용자 이름
+  adminPassword: "gamearchive@"  # Grafana 관리자 비밀번호
+  persistence:
+    enabled: true  # Persistence 활성화
+    size: 1Gi  # 요청할 스토리지 크기
+    accessModes:
+      - ReadWriteOnce  # PVC가 단일 노드에 마운트되도록 설정
+    storageClassName: "local-path"  # 스토리지 클래스를 local-path로 설정  
+  nodeSelector:
+    purpose: monitoring  # 모니터링 전용 노드에 배치
+  tolerations:
+  - key: "purpose"
+    operator: "Equal"
+    value: "monitoring"
+    effect: "NoSchedule"  # Taint가 있는 노드에서 실행 허용
+
+kube-state-metrics:
+  nodeSelector:
+    purpose: monitoring  # 모니터링 전용 노드에 배치
+  tolerations:
+  - key: "purpose"
+    operator: "Equal"
+    value: "monitoring"
+    effect: "NoSchedule"  # Taint가 있는 노드에서 실행 허용
