@@ -11,7 +11,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.78.2
-    created: "2024-12-17T14:08:33.480573662Z"
+    created: "2024-12-17T16:59:17.561933195Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -37,11 +37,15 @@ entries:
       name: prometheus-nginx-exporter
       repository: https://prometheus-community.github.io/helm-charts
       version: 0.2.*
+    - condition: mysqlExporter.enabled
+      name: prometheus-mysql-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 0.2.*
     description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards,
       and Prometheus rules combined with documentation and scripts to provide easy
       to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
       Prometheus Operator.
-    digest: 5a4ca584073aa661e55c4c843737ab0b9334acb6ea5d9226baf5ff2862d66572
+    digest: 6a121738ac89a4646f0edea5a9244f083d04c88df2af8833aa62a97102819b15
     home: https://github.com/prometheus-operator/kube-prometheus
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -74,4 +78,4 @@ entries:
     urls:
     - https://thsus72.github.io/prometheus/kube-prometheus-stack-66.3.1.tgz
     version: 66.3.1
-generated: "2024-12-17T14:08:33.342337534Z"
+generated: "2024-12-17T16:59:17.216037835Z"

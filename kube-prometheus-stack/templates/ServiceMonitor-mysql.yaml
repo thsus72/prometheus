@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mysql-exporter
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus-mysql-exporter  # Service의 라벨에 맞게 수정
+      release: prometheus            # release 라벨 추가
+  endpoints:
+    - port: mysql-exporter           # Service에서 정의한 포트 이름
+      interval: 15s
+      scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+      - monitoring

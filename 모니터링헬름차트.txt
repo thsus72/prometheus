@@ -94,6 +94,17 @@
 │   │   │   │   ├── ./kube-prometheus-stack/charts/kube-state-metrics/templates/stsdiscovery-rolebinding.yaml
 │   │   │   │   └── ./kube-prometheus-stack/charts/kube-state-metrics/templates/verticalpodautoscaler.yaml
 │   │   │   └── ./kube-prometheus-stack/charts/kube-state-metrics/values.yaml
+│   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter
+│   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/Chart.yaml
+│   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/README.md
+│   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/templates
+│   │   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/templates/NOTES.txt
+│   │   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/templates/_helpers.tpl
+│   │   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/templates/deployment.yaml
+│   │   │   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/templates/secret.yaml
+│   │   │   │   └── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/templates/service.yaml
+│   │   │   └── ./kube-prometheus-stack/charts/prometheus-mysql-exporter/values.yaml
+│   │   ├── ./kube-prometheus-stack/charts/prometheus-mysql-exporter-0.2.1.tgz
 │   │   ├── ./kube-prometheus-stack/charts/prometheus-nginx-exporter
 │   │   │   ├── ./kube-prometheus-stack/charts/prometheus-nginx-exporter/Chart.lock
 │   │   │   ├── ./kube-prometheus-stack/charts/prometheus-nginx-exporter/Chart.yaml
@@ -199,6 +210,7 @@
 │   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-common-nginx.yaml
 │   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-discount-nginx.yaml
 │   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-guides-nginx.yaml
+│   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-mysql.yaml
 │   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-news-nginx.yaml
 │   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-qa-nginx.yaml
 │   │   ├── ./kube-prometheus-stack/templates/ServiceMonitor-timed-deal-nginx.yaml
@@ -419,4 +431,4 @@
 ├── ./values-monitoring.yaml
 └── ./모니터링헬름차트.txt
 
-45 directories, 374 files
+47 directories, 384 files
