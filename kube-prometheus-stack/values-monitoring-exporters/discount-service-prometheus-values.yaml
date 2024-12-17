@@ -1,0 +1,10 @@
+prometheus-nginx-exporter:
+  enabled: true
+  nginxServer: "http://discount-service-nginx.discount-service.svc.cluster.local/nginx_status"
+  serviceMonitor:
+    enabled: true
+    namespace: "monitoring"
+    interval: 30s
+    path: /nginx_status
+    additionalLabels:
+      release: prometheus

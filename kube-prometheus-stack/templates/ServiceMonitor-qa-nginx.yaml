@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: qa-service-nginx-servicemonitor
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: qa-service-nginx
+  namespaceSelector:
+    matchNames:
+      - qa-service
+  endpoints:
+    - port: http
+      path: /nginx_status
+      interval: 30s

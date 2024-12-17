@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: auth-service-nginx-servicemonitor
+  namespace: monitoring  # Prometheus 스택이 설치된 네임스페이스
+  labels:
+    release: prometheus   # Prometheus Operator가 감지하도록 설정
+spec:
+  selector:
+    matchLabels:
+      app: auth-service-nginx  # auth-service 차트의 Nginx Service 라벨과 일치
+  namespaceSelector:
+    matchNames:
+      - auth-service            # auth-service 네임스페이스
+  endpoints:
+    - port: http                # Nginx Service의 포트 이름
+      path: /nginx_status       # 메트릭이 노출되는 엔드포인트
+      interval: 30s             # 메트릭 수집 주기
